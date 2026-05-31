@@ -1,0 +1,116 @@
+ticker,company,theme
+AAOI,Applied Optoelectronics,Photonics
+ALAB,Astera Labs,AI Connectivity
+AMD,Advanced Micro Devices,AI Infrastructure / Semiconductors
+ANET,Arista Networks,AI Networking
+APP,AppLovin,AI Software / Advertising
+ARM,Arm Holdings,AI Infrastructure / Semiconductors
+ARQQ,Arqit Quantum,Quantum / Cybersecurity
+ASTS,AST SpaceMobile,Space / Communications
+AVGO,Broadcom,AI Infrastructure / Semiconductors
+CLS,Celestica,AI Infrastructure / Manufacturing
+CLSK,CleanSpark,Crypto Mining
+COHR,Coherent,Photonics
+CRWD,CrowdStrike,Cybersecurity
+DDOG,Datadog,Cloud / Software
+DELL,Dell Technologies,AI Infrastructure
+HOOD,Robinhood,Fintech / Crypto
+IONQ,IonQ,Quantum
+IREN,IREN,Crypto Mining / AI Infrastructure
+LITE,Lumentum,Photonics
+LUNR,Intuitive Machines,Space
+MARA,MARA Holdings,Crypto Mining
+MDB,MongoDB,Cloud / Software
+META,Meta Platforms,AI Platforms
+MRVL,Marvell Technology,AI Networking / Semiconductors
+MSTR,MicroStrategy,Crypto Infrastructure
+MU,Micron Technology,Memory / Semiconductors
+NET,Cloudflare,Cloud / Software
+NNE,Nano Nuclear Energy,Nuclear Energy
+NOW,ServiceNow,Enterprise Software
+NVDA,NVIDIA,AI Infrastructure / Semiconductors
+OKLO,Oklo,Nuclear Energy
+PLTR,Palantir,AI Software
+POET,POET Technologies Inc,Photonics
+QBTS,D-Wave Quantum,Quantum
+QUBT,Quantum Computing Inc,Quantum
+RBRK,Rubrik,Cybersecurity / Data
+RDW,Redwire,Space
+RGTI,Rigetti Computing,Quantum
+RIOT,Riot Platforms,Crypto Mining
+RKLB,Rocket Lab,Space
+RXRX,Recursion Pharmaceuticals,Biotech Momentum
+SERV,Serve Robotics,Robotics
+SMCI,Super Micro Computer,AI Infrastructure
+SMR,NuScale Power,Nuclear Energy
+SNOW,Snowflake,Cloud / Software
+SOUN,SoundHound AI,AI Software
+TSLA,Tesla,EV / Robotics
+VRT,Vertiv,AI Infrastructure / Power
+VST,Vistra,Power / Energy
+INTC,Intel,Semiconductors / Foundry
+STX,Seagate Technology,AI Storage
+VECO,Veeco Instruments,Semiconductor Equipment
+MTSI,MACOM Technology,RF / Optical Semiconductors
+ON,ON Semiconductor,Power Semiconductors
+BITF,Bitfarms,Crypto Mining
+QCOM,Qualcomm,Edge AI Semiconductors
+HUT,Hut 8,Crypto Mining / AI Infrastructure
+NXPI,NXP Semiconductors,Automotive Semiconductors
+STRL,Sterling Infrastructure,Data Center Infrastructure
+WDC,Western Digital,AI Storage
+CORZ,Core Scientific,AI Data Centers / Crypto Mining
+ACMR,ACM Research,Semiconductor Equipment
+MYRG,MYR Group,Electrical Infrastructure
+APLD,Applied Digital,AI Data Centers
+ACLS,Axcelis Technologies,Semiconductor Equipment
+PANW,Palo Alto Networks,Cybersecurity
+BE,Bloom Energy,Data Center Power
+HPE,Hewlett Packard Enterprise,AI Servers
+BTDR,Bitdeer Technologies,Crypto Mining / AI Data Centers
+CIFR,Cipher Mining,Crypto Mining / HPC
+POWL,Powell Industries,Electrical Equipment
+PWR,Quanta Services,Grid Infrastructure
+NTAP,NetApp,Enterprise Storage
+AMAT,Applied Materials,Semiconductor Equipment
+MPWR,Monolithic Power Systems,Power Semiconductors
+CRDO,Credo Technology,AI Connectivity
+WCC,WESCO International,Electrical Distribution
+LRCX,Lam Research,Semiconductor Equipment
+AEHR,Aehr Test Systems,Semiconductor Testing
+KLAC,KLA,Semiconductor Process Control
+IESC,IES Holdings,Electrical Contracting
+CIEN,Ciena,Optical Networking
+GH,Guardant Health,Liquid Biopsy
+NVT,nVent Electric,Electrical Infrastructure
+FORM,FormFactor,Semiconductor Testing
+PSTG,Pure Storage,Enterprise Storage
+WULF,TeraWulf,Crypto Mining / AI Power
+GNRC,Generac,Distributed Power
+GOOGL,Alphabet,AI Cloud / Platforms
+JOBY,Joby Aviation,Electric Aviation
+ASML,ASML Holding,Semiconductor Equipment
+GWW,WW Grainger,Industrial Distribution
+ADI,Analog Devices,Industrial Semiconductors
+TER,Teradyne,Semiconductor Testing
+AMZN,Amazon,AI Cloud / Infrastructure
+ROK,Rockwell Automation,Factory Automation
+FIX,Comfort Systems USA,Data Center Mechanical Systems
+CAT,Caterpillar,Infrastructure Equipment
+TSM,Taiwan Semiconductor Manufacturing,AI Foundry
+IBKR,Interactive Brokers,Electronic Brokerage
+LLY,Eli Lilly,GLP-1 / Obesity
+V,Visa,Payments
+AFRM,Affirm,Fintech
+ENTG,Entegris,Semiconductor Materials
+ONDS,Ondas Inc,Communication Equipment
+NVTS,Navitas Semiconductor Corp,Semiconductor
+RR,Richtech Robotics Inc,Industrial Machinery
+DY,Dycom Industries,Fiber Infrastructure
+ORCL,Oracle,AI Cloud Infrastructure
+HEI,HEICO,Aerospace Electronics
+NTRA,Natera,Genetic Testing
+GS,Goldman Sachs,Capital Markets
+DAL,Delta Air Lines,Travel Demand
+MS,Morgan Stanley,Wealth Management / Capital Markets
+SATS,EchoStar,Satellite Communications
