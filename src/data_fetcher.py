@@ -63,6 +63,9 @@ def load_all_data(tickers: tuple, _cache_key: str = "") -> dict:
         if watchlist_failed:
             st.warning(f"Could not fetch data for: {', '.join(watchlist_failed)}")
 
+    # Store fetch timestamp inside the cache so callers know exactly when the
+    # data was populated, not when the cached result was later retrieved.
+    results["_fetched_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     return results
 
 

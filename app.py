@@ -107,8 +107,8 @@ with st.sidebar:
         st.cache_data.clear()
         st.rerun()
 
-    if st.session_state["last_refresh"]:
-        st.caption(f"Last refresh: {st.session_state['last_refresh']}")
+    if st.session_state.get("last_refresh"):
+        st.caption(f"Data as of: {st.session_state['last_refresh']}")
 
     st.divider()
 
@@ -178,8 +178,7 @@ tickers_tuple = tuple(watchlist_df["ticker"].tolist())
 with st.spinner("Loading market data (cached for 1 hour)..."):
     raw_data = load_all_data(tickers_tuple, _cache_key=st.session_state["cache_key"])
 
-if not st.session_state["last_refresh"]:
-    st.session_state["last_refresh"] = get_data_timestamp()
+st.session_state["last_refresh"] = raw_data.get("_fetched_at", get_data_timestamp())
 
 spy_df = raw_data.get(BENCHMARK_SPY)
 qqq_df = raw_data.get(BENCHMARK_QQQ)
@@ -285,6 +284,7 @@ tab1, tab2 = st.tabs(["📊 Momentum Command Center", "📋 Full Watchlist"])
 # ══════════════════════════════════════════════════════════════════════════════
 with tab1:
     st.header("Momentum Command Center")
+    st.caption(f"Data fetched: {st.session_state['last_refresh']} (cached 1 hr — use Refresh in sidebar for live data)")
     if sb_themes or sb_status or sb_risk:
         active = []
         if sb_themes:
