@@ -252,10 +252,14 @@ if results_df.empty:
     st.error("No data loaded. Check your internet connection and try refreshing.")
     st.stop()
 
-# Rank columns: method='min' gives standard competition ranking (ties share the same rank).
-# Raw rank scores are continuous floats, so genuine ties are now rare.
-results_df["6M Rank"] = results_df["6M Rank Score"].rank(ascending=False, method="min").astype(int)
-results_df["1Y Rank"] = results_df["1Y Rank Score"].rank(ascending=False, method="min").astype(int)
+# Rank columns: sanitize missing/infinite scores before casting ranks to int.
+# A ticker with incomplete market data should stay visible, but rank below valid rows.
+for score_col, rank_col in [("6M Rank Score", "6M Rank"), ("1Y Rank Score", "1Y Rank")]:
+    clean_scores = pd.to_numeric(results_df[score_col], errors="coerce").replace([np.inf, -np.inf], np.nan)
+    valid_scores = clean_scores.dropna()
+    fill_value = valid_scores.min() - 1 if not valid_scores.empty else 0
+    results_df[score_col] = clean_scores.fillna(fill_value)
+    results_df[rank_col] = results_df[score_col].rank(ascending=False, method="min").astype(int)
 
 
 # ─── Apply sidebar filters ────────────────────────────────────────────────────

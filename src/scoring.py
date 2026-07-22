@@ -19,6 +19,15 @@ def _clamp(val: float, lo: float = 0.0, hi: float = 100.0) -> float:
     return max(lo, min(hi, val))
 
 
+def _safe_num(val: float, default: float = 0.0) -> float:
+    """Return a finite float so partial market data cannot poison scores."""
+    try:
+        val = float(val)
+    except (TypeError, ValueError):
+        return default
+    return val if np.isfinite(val) else default
+
+
 def compute_momentum_score(
     ticker_df: pd.DataFrame,
     spy_df: pd.DataFrame,
@@ -250,15 +259,19 @@ def compute_6m_rank_score(
     naturally across the watchlist (no artificial clamping that ties scores).
     Higher score = better rank.
     """
-    r1m = returns.get("1M", 0) or 0
-    r3m = returns.get("3M", 0) or 0
-    r6m = returns.get("6M", 0) or 0
+    r1m = _safe_num(returns.get("1M"))
+    r3m = _safe_num(returns.get("3M"))
+    r6m = _safe_num(returns.get("6M"))
+    rs_qqq = _safe_num(rs_qqq)
+    mom_score = _safe_num(mom_score, 50.0)
+    det_score = _safe_num(det_score)
+    dist50 = _safe_num(dist50)
 
     # Primary: weighted raw returns — these vary widely and create separation
     s = (r1m * 0.40) + (r3m * 0.30) + (r6m * 0.15)
 
     # RS vs QQQ: relative strength adds another differentiating dimension
-    if not np.isnan(rs_qqq):
+    if np.isfinite(rs_qqq):
         s += rs_qqq * 0.20
 
     # Quality modifier: momentum health shifts the score up/down
@@ -266,7 +279,7 @@ def compute_6m_rank_score(
     s -= det_score * 0.15
 
     # Overextension penalty (high dist from 50DMA = mean-reversion risk)
-    if not np.isnan(dist50):
+    if np.isfinite(dist50):
         if dist50 > 50:
             s -= 20
         elif dist50 > 35:
@@ -291,15 +304,20 @@ def compute_1y_rank_score(
     Emphasises 6M/1Y trend and durability over short-term momentum.
     Higher score = better rank.
     """
-    r3m = returns.get("3M", 0) or 0
-    r6m = returns.get("6M", 0) or 0
-    r1y = returns.get("1Y", 0) or 0
+    r3m = _safe_num(returns.get("3M"))
+    r6m = _safe_num(returns.get("6M"))
+    r1y = _safe_num(returns.get("1Y"))
+    rs_qqq = _safe_num(rs_qqq)
+    mom_score = _safe_num(mom_score, 50.0)
+    det_score = _safe_num(det_score)
+    dist50 = _safe_num(dist50)
+    trend_consistency = _safe_num(trend_consistency, 0.5)
 
     # Primary: longer-horizon raw returns
     s = (r6m * 0.35) + (r1y * 0.25) + (r3m * 0.15)
 
     # RS vs QQQ
-    if not np.isnan(rs_qqq):
+    if np.isfinite(rs_qqq):
         s += rs_qqq * 0.20
 
     # Durability adjusters
@@ -307,11 +325,11 @@ def compute_1y_rank_score(
     s -= det_score * 0.18
     if above_200ema:
         s += 8
-    if not np.isnan(trend_consistency):
+    if np.isfinite(trend_consistency):
         s += (trend_consistency - 0.5) * 30  # ~±15 pts for consistency spread
 
     # Moderate overextension penalty (less punishing than 6M rank)
-    if not np.isnan(dist50) and dist50 > 40:
+    if np.isfinite(dist50) and dist50 > 40:
         s -= 8
 
     return round(s, 3)  # No clamping — raw spread for clean ranking
