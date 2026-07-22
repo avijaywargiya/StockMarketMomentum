@@ -284,7 +284,8 @@ tab1, tab2 = st.tabs(["📊 Momentum Command Center", "📋 Full Watchlist"])
 # ══════════════════════════════════════════════════════════════════════════════
 with tab1:
     st.header("Momentum Command Center")
-    st.caption(f"Data fetched: {st.session_state['last_refresh']} (cached 1 hr — use Refresh in sidebar for live data)")
+    _spy_last = spy_df.index[-1].strftime("%Y-%m-%d") if spy_df is not None and not spy_df.empty else "unknown"
+    st.caption(f"Data fetched: {st.session_state['last_refresh']} · Prices through: {_spy_last} (cached 1 hr)")
     if sb_themes or sb_status or sb_risk:
         active = []
         if sb_themes:

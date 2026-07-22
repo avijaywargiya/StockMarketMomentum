@@ -2,7 +2,7 @@ import yfinance as yf
 import pandas as pd
 import numpy as np
 import streamlit as st
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Optional
 import warnings
 
@@ -12,7 +12,10 @@ from src.config import LOOKBACK_DAYS, BENCHMARK_SPY, BENCHMARK_QQQ
 
 
 def _date_range():
-    end = datetime.today()
+    # Use UTC date + 1 day so both localhost and Streamlit Cloud (UTC) always
+    # request the same date range regardless of the server's local timezone.
+    # yfinance end is exclusive, so +1 ensures the latest trading day is included.
+    end = datetime.now(timezone.utc).date() + timedelta(days=1)
     start = end - timedelta(days=LOOKBACK_DAYS)
     return start.strftime("%Y-%m-%d"), end.strftime("%Y-%m-%d")
 
